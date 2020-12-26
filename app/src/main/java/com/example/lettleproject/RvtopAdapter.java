@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,13 +23,13 @@ public class RvtopAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.layout_toolbar, parent, false);
-        return null;
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ViewHolderOne holderOne = (ViewHolderOne) holder;
-
+        ViewHolder holderOne = (ViewHolder) holder;
+//        holderOne.mIvPinpai
     }
 
     @Override
@@ -44,13 +45,13 @@ public class RvtopAdapter extends RecyclerView.Adapter {
         return 2;
     }
 
-    class ViewHolderOne extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder{
         View view;
-        Banner mBanner;
+        ImageView mIvPinpai;
 
-        ViewHolderOne(View view) {
+        ViewHolder(View view) {
             super(view);
-            this.mBanner = (Banner) view.findViewById(R.id.banner);
+            this.mIvPinpai = (ImageView) view.findViewById(R.id.iv_pinpai);
         }
     }
 }

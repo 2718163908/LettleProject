@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<String> strings;
 
     private RvtopAdapter adapter;
-    private Banner banner;
+    private Banner iBanner;
     private static final String TAG = "HomeFragment";
 
     public HomeFragment() {
@@ -62,8 +62,8 @@ public class HomeFragment extends Fragment {
     private void initView(View view) {
         rv_top = view.findViewById(R.id.rv_top);
         rv_down = view.findViewById(R.id.rv_down);
-        banner = view.findViewById(R.id.banner);
-
+        iBanner = view.findViewById(R.id.banner);
+//        adapter = new RvtopAdapter();
         new Retrofit.Builder()
                 .baseUrl(HomeApi.HOME_api)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -85,34 +85,32 @@ public class HomeFragment extends Fragment {
                         Log.d("TAG", "onNext: " + homeBean.toString());
                         list = new ArrayList<>();
                         ArrayList<String> image = new ArrayList<>();
-                        List<HomeBean.DataBean.BannerBean> bannerr = homeBean.getData().getBanner();
-                        for (int i = 0; i <bannerr.size(); i++) {
-                            image.add(bannerr.get(i).getImage_url());
+                        List<HomeBean.DataBean.BannerBean> bannerBeans = homeBean.getData().getBanner();
+                        for (int i = 0; i <bannerBeans.size(); i++) {
+                            image.add(bannerBeans.get(i).getImage_url());
                         }
-//                        image.add();
-                        HomeFragment.this.banner.setImages(image)
+                        iBanner.setImages(bannerBeans)
                                 .setImageLoader(new ImageLoader() {
                                     @Override
                                     public void displayImage(Context context, Object path, ImageView imageView) {
-
-                                        Glide.with(context).load(path).into(imageView);
+                                        HomeBean.DataBean.BannerBean beans = (HomeBean.DataBean.BannerBean) path;
+                                        Glide.with(context).load(beans.getImage_url()).into(imageView);
                                     }
                                 }).start();
-
-                        Log.d("tag", "getBanner: " + homeBean.toString());
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("TAG", "onError: " + e.getMessage());
+
                     }
 
                     @Override
                     public void onComplete() {
 
                     }
-                });
-        adapter = new RvtopAdapter();
+                }) ;
+        new VirtualLay
+        rv_top.setLayoutManager();
     }
 
     private void initData() {
