@@ -30,7 +30,7 @@ public class MainSingleAdapter extends DelegateAdapter.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.sing_itm_layout3, parent, false);
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_sing_itm_layout, parent, false);
         return new MyViewHolder(inflate);
     }
 
@@ -51,7 +51,7 @@ public class MainSingleAdapter extends DelegateAdapter.Adapter {
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.line_text);
+//            textView = itemView.findViewById(R.id.line_text);
         }
     }
 }

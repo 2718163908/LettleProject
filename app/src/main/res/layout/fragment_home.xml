@@ -134,11 +134,11 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_top"
+        android:id="@+id/recycler_brand"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_down"
+        android:id="@+id/rv_newGood"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
