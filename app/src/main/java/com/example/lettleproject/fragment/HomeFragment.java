@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.bumptech.glide.Glide;
 import com.example.lettleproject.HomeApi;
 import com.example.lettleproject.data.BannerBean;
@@ -109,8 +110,13 @@ public class HomeFragment extends Fragment {
 
                     }
                 }) ;
-        new VirtualLay
-        rv_top.setLayoutManager();
+        VirtualLayoutManager layoutManager = new VirtualLayoutManager(getContext());
+        rv_top.setLayoutManager(layoutManager);
+        RecyclerView.RecycledViewPool recycledViewPool = new RecyclerView.RecycledViewPool();
+        rv_top.setRecycledViewPool(recycledViewPool);
+        recycledViewPool.setMaxRecycledViews(0,10);
+
+
     }
 
     private void initData() {
